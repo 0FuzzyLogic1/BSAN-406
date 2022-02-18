@@ -21,7 +21,7 @@ app.layout = html.Div( [
         html.H2('potato'),
 
 
-        html.H2('dropdown'),
+        html.H1('dropdown'),
             html.Div('Who is responsible for 9/11'),
             html.Br(),
             dcc.Dropdown(
@@ -33,13 +33,18 @@ app.layout = html.Div( [
                 ],
                 value='g_w_bush',
                     style={
-                        'width': '40%'
+                        'width': '50%'
                     }
             ),
             html.Br(),
             html.Div(id="dd1_output")
          ] )
-
+@app.callback(
+    Output('dd1_output', 'is responsible'),
+    Input('dd1', 'value')
+)
+def update_bourbon_selection(value):
+    return 'Scooby Doo "{}"'.format(value)
 app.run_server(debug=True)
 # %%
 
